@@ -16,7 +16,7 @@ export const MovieList = () => {
 			{loading ? (
 				<Loader />
 			) : (
-        <div className='card-list-Movie container'>
+        <div className='card-list-Movie container '>
           {allMovies.map((movie)=> (
               <CardMovie movie={movie} key={movie.id} />
           ))}

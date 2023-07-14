@@ -32,10 +32,14 @@ export const Navigation = ({user}) => {
 	
 	  } 
 
+
+	  
+
   return (
     <>
-			<header className='header'>
-				<Link to='/' className='logo'>
+			<header className='header col'>
+			<div className="row">
+				<Link to='/' className='logo col-md-6'>
 					<img
 						src="../ambpelislogo-192x192.png"
                         width="30"
@@ -44,40 +48,44 @@ export const Navigation = ({user}) => {
                         alt="AMBPelis Logo"
 					/>
 				</Link>
-                
+               
 
-				<form onSubmit={onSearchSubmit}>
-					<div className='form-group'>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							fill='none'
-							viewBox='0 0 24 24'
-							strokeWidth='1.5'
-							stroke='currentColor'
-							className='icon-search'
-						>
-							<path
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
+				<form onSubmit={onSearchSubmit} className='col-md-6'>
+					<div className='row'>
+						
+						<div className='form-group col-md-6'>
+							
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								fill='none'
+								viewBox='0 0 24 24'
+								strokeWidth='1.5'
+								stroke='currentColor'
+								className='icon-search'
+							>
+								<path
+									strokeLinecap='round'
+									strokeLinejoin='round'
+									d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
+								/>
+							</svg>
+							<input
+								type='search'
+								name='valueSearch'
+								id=''
+								value={valueSearch}
+								onChange={onInputChange}
+								placeholder='Buscar Pelicula'
 							/>
-						</svg>
-						<input
-							type='search'
-							name='valueSearch'
-							id=''
-							value={valueSearch}
-							onChange={onInputChange}
-							placeholder='Buscar Pelicula'
-						/>
-					</div>
+						</div>
+						<div className='col-md-6'>
 
-					<button className='btn-search'>Buscar</button>
+							<button className='btn-search'>Buscar</button>
+						</div>
+					</div>
 				</form>
-				<div>
-				<button className="d-block ms-auto mb-2 h5" onClick={cerrar}>Cerrar sesión</button>
-				{/*{user.rol === "admin" ? <Admin /> : null}*/}
-				</div>
+				
+			</div>
 			</header>
 
 			<Outlet />
