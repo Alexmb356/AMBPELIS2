@@ -22,7 +22,7 @@ export const SearchPage = () => {
   return (
     <div className='container'>
 			
-			<div className='card-list-pokemon container'>
+			<div className='card-list-Movie container'>
 				{globalMovies.map(movie => (
 					<CardMovie movie={movie} key={movie.id} />
 				))}

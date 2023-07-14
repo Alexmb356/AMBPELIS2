@@ -56,7 +56,7 @@ export const MoviePage = () => {
   }, [])
 
   return (
-    <main className='container main-container'>
+    <main className='main-container'>
       {loading ? (
 				<Loader />
 			) : ( <>
@@ -115,7 +115,7 @@ export const MoviePage = () => {
           <div className='container'>
           <h1 className="text-black">{movie.title}</h1>
           <h4 className="text-black">{genre}</h4>
-          <p className="text-black">{movie.overview}</p>
+          <p className="text-white">{movie.overview}</p>
           </div>
           </>)}
     </main>

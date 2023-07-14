@@ -9,10 +9,10 @@ export const HomePage = () => {
   return (
     <>
       <MovieList/>
-        <div className="paginacion">
+        <div className="container-btn-load-more">
                               
-        <Button variant="secondary" onClick={onClickLess}>Anterior</Button>
-        <Button variant="secondary" onClick={onClickLoadMore} >Siguiente</Button>
+        <button className="btn-load-more p-14 m-10" variant="secondary" onClick={onClickLess}>Anterior</button>
+        <button className="btn-load-more p-14 m-10" variant="secondary" onClick={onClickLoadMore} >Siguiente</button>
       </div>
         
     </>

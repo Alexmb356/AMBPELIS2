@@ -34,7 +34,7 @@ export const Navigation = ({user}) => {
 
   return (
     <>
-			<header className='container'>
+			<header className='header'>
 				<Link to='/' className='logo'>
 					<img
 						src="../ambpelislogo-192x192.png"
@@ -68,14 +68,14 @@ export const Navigation = ({user}) => {
 							id=''
 							value={valueSearch}
 							onChange={onInputChange}
-							placeholder='Buscar nombre de pokemon'
+							placeholder='Buscar Pelicula'
 						/>
 					</div>
 
 					<button className='btn-search'>Buscar</button>
 				</form>
 				<div>
-				<button className="d-block ms-auto mb-3 h5" onClick={cerrar}>Cerrar sesión</button>
+				<button className="d-block ms-auto mb-2 h5" onClick={cerrar}>Cerrar sesión</button>
 				{/*{user.rol === "admin" ? <Admin /> : null}*/}
 				</div>
 			</header>
