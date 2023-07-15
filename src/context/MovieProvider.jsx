@@ -84,9 +84,7 @@ export const MovieProvider = ({children}) => {
 		}    
   	}
 
-	/*useEffect(() => {
-	  getAllMovies()
-	}, [])*/
+	
 
 	useEffect(()=>{
         getAllMovies();

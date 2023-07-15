@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { MovieList } from '../componentes';
-import Button from 'react-bootstrap/Button';
+
 import { MovieContext } from '../context/MovieContext';
 
 export const HomePage = () => {

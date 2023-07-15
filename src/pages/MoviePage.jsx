@@ -1,6 +1,6 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { MovieContext } from '../context/MovieContext';
+
 import axios from "axios";
 import { API_KEY, API_URL  } from "../componentes/API/apiconf";
 import YouTube from 'react-youtube';
@@ -10,7 +10,7 @@ import {Loader} from '../componentes/Loader'
 
 export const MoviePage = () => {
 
-  const {getMovieByID} = useContext(MovieContext)
+  
   const [trailer, setTrailer]= useState ("null");
   const [movie, setMovie]= useState ({title:"Loading Movies"});
   const [playing, setPlaying] = useState(false);
@@ -112,7 +112,7 @@ export const MoviePage = () => {
             </div>
             
           ) : null}
-          <div className='container'>
+          <div className='container-movieoverview'>
           <h1 className="text-black">{movie.title}</h1>
           <h4 className="text-black">{genre}</h4>
           <p className="text-white">{movie.overview}</p>

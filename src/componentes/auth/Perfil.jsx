@@ -9,10 +9,14 @@ import Swal from 'sweetalert2';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faFloppyDisk} from '@fortawesome/free-solid-svg-icons'
 import withReactContent from 'sweetalert2-react-content';
+
 const MySwal = withReactContent(Swal);
 
-const Editar = () =>{
+const Perfil = () =>{
 
+    //Declaración de variables
+   
+    
     const [form, setForm] = useState({
         Nombre: '',
         Apellido:'',
@@ -133,23 +137,24 @@ const Editar = () =>{
         getUsuarioById(id);
     }, [id])
 
-
-    //array de roles
-    const options = [
-        { id: 1, label: 'User', value: 'user' },
-        { id: 2, label: 'Admin', value: 'admin'},
-    ];
-
+    
     const Back = (e) => {
-        navigate("/Mostrar");
+        navigate("/");
     }
+
 
     return(
         <div className='Container'>
             <div className='Container'>
                 <form action="#" className=" h-full  relative z-2 m-2 px-10" onSubmit={update}>
                     <fieldset className="formulario-contacto__contenido">
-                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2 text-white" style={{fontWeight: 'bold'}}>Formulario Editar Usuario</legend>
+                        <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2 text-white" style={{fontWeight: 'bold'}}>Bienvenido {form.Nombre}</legend>
+                            <h1 className="text-right px-3 mb-3 h5">
+                                    {form.rol=== "admin" ?(
+									<a href="/Admin" className=' text-white' style={{fontWeight: 'bold'}}>Administrar</a>
+								) : null}
+                                </h1>
+                                   
                                     <div className="row my-2">
                                         <div className="col-md-6">
                                             <div className="col-md-12">
@@ -336,26 +341,8 @@ const Editar = () =>{
                                             onChange={cambio}/>
                                             <span className="formulario-contacto__contenido__span"></span>
                                         </div>
-                                        <div className="col-md-6">
-                                            <div className="col-md-12">
-                                                <label for='rol' className="text-1 text-white"style={{fontWeight: 'bold'}}>Rol</label>
-                                            </div>
-                                            <select name='rol' type='select' value={form.rol} onChange={cambio}
-                                            className="form-control rounded-md mb-2 p-1 text-black bg-gray-300">
-                                                {options.map((option) => (
-                                                <option key={option.id} value={option.value}>
-                                                    {option.label}
-                                                </option>
-                                                ))}
-                                            
-                                            </select>
-                                            
-                                            
-                                            
-                                        </div>
                                                                       
                                     </div>
-                                        
                                     <div className="row my-2">
                                         <div className="col-md-6">
                                             <div className="col-md-12">
@@ -394,11 +381,11 @@ const Editar = () =>{
                                     
                                     <div className='flex flex-col items-center p-2'>
                                         <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2  px-5 py-2" type="submit" formaction="./menu-administrador.html"><FontAwesomeIcon icon={faFloppyDisk} /> Guardar Cambios</button>
-                                        <div className="Back">
-                                        <button onClick={Back} ><label className='mx-1 text-center text-white' style={{fontWeight: 'bold ' , cursor: 'pointer'}}>Back</label></button>
+                                        <div className="recaptcha m-2">
                                         </div>
                                     </div>
                         </fieldset>
+                        <button onClick={Back} ><label className='mx-1 text-center text-white' style={{fontWeight: 'bold' , cursor: 'pointer'}}>Back</label></button>
                 </form>
 
             </div>
@@ -409,4 +396,4 @@ const Editar = () =>{
     
 }
 
-export default Editar
+export default Perfil

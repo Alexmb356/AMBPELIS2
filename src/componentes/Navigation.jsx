@@ -1,20 +1,19 @@
-import React, {useContext} from 'react';
+import React, {useContext } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { MovieContext } from '../context/MovieContext';
-
-import Admin from "../componentes/auth/Admin";
 import firebaseApp from "../firebaseConfig/firebase";
 import { getAuth, signOut } from "firebase/auth";
 const auth = getAuth(firebaseApp);
 
 
-export const Navigation = ({user}) => {
-
+function Navigation ({user}) {
+	
+ 
     const { onInputChange, valueSearch, onResetForm, getGlobalMovies } = useContext(MovieContext);
     
 	const navigate = useNavigate();
 	
-
+	//console.log("Este es el usuario",user)
 	const onSearchSubmit = (e) => {
 		e.preventDefault();
 		getGlobalMovies(valueSearch)
@@ -25,7 +24,7 @@ export const Navigation = ({user}) => {
 		onResetForm();
 	};
 
-	function cerrar () {
+	function cerrarSesion () {
 		navigate("/");
 		signOut(auth);
 		
@@ -39,7 +38,7 @@ export const Navigation = ({user}) => {
     <>
 			<header className='header col'>
 			<div className="row">
-				<Link to='/' className='logo col-md-6'>
+				<Link to='/' className='logo col-md-4'>
 					<img
 						src="../ambpelislogo-192x192.png"
                         width="30"
@@ -50,10 +49,10 @@ export const Navigation = ({user}) => {
 				</Link>
                
 
-				<form onSubmit={onSearchSubmit} className='col-md-6'>
+				<form onSubmit={onSearchSubmit} className='col-md-4'>
 					<div className='row'>
 						
-						<div className='form-group col-md-6'>
+						<div className='form-group col-md-7'>
 							
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -77,13 +76,26 @@ export const Navigation = ({user}) => {
 								onChange={onInputChange}
 								placeholder='Buscar Pelicula'
 							/>
-						</div>
-						<div className='col-md-6'>
-
 							<button className='btn-search'>Buscar</button>
 						</div>
+						
+
+						
+						
 					</div>
 				</form>
+				<div className='container-sesion col-md-4'>
+							<h1 className="text-right px-3 mb-3 h5">
+								{user === null ? (
+									<a href="/Login">Iniciar Sesion</a>
+								) : (
+									<>
+									<a href={`/perfil/${user.uid}`}  className='m-5'>{user.nombre}</a>
+									<button className="logout-button text-white" onClick={cerrarSesion}>Cerrar sesión</button>
+									</>
+								)}
+							</h1>
+						</div>
 				
 			</div>
 			</header>
@@ -92,3 +104,5 @@ export const Navigation = ({user}) => {
 		</>
 	);
 }
+
+export default Navigation;

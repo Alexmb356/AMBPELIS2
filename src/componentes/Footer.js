@@ -8,12 +8,18 @@ export default function Footer() {
   return(
 
       <footer className="mt-4 text-center">
-            <div className="items-center grid-flow-col">
+            <div className="d-flex justify-content-center align-items-center mt-4">
               <a href="/">
-                  <img alt="Icono ambpelis" src="../ambpelislogo-192x192.png" width={100} className="svg-icon" />
+                  <img alt="Icono ambpelis" src="../ambpelislogo-192x192.png" width={100} className="svg-icon items-center" />
                   
               </a>
-              <p className="mt-4 text-white">Copyright © 2023 - All right reserved- Alexander Mora &copy; {fechaActual.getFullYear()}</p>
+             
+              
+              
+          </div>
+          <br/>
+          <div className='grid-flow-col gap-4 md:place-self-center md:justify-self-end'>
+            <p className="mt-4 text-white">Copyright © 2023 - All right reserved- Alexander Mora &copy; {fechaActual.getFullYear()}</p>
           </div>
 
           <div className='grid-flow-col gap-4 md:place-self-center md:justify-self-end'>

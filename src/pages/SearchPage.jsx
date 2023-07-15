@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CardMovie } from '../componentes/CardMovie';
 import {MovieContext } from '../context/MovieContext';

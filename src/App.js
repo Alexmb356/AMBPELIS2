@@ -1,15 +1,25 @@
 
 import './App.css';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { AppRouter } from './AppRouter';
 import { MovieProvider } from './context/MovieProvider';
+
 import Footer from './componentes/Footer';
 import firebaseApp from "./firebaseConfig/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { Navigation } from './componentes';
-
+import Perfil from './componentes/auth/Perfil';
+import {Navigate, Route, Routes} from 'react-router-dom';
+import Navigation from "./componentes/Navigation";
 import Login from './componentes/auth/Login';
+import Admin from './componentes/auth/Admin';
+import Registrarse from './componentes/auth/Registrarse';
+import Mostrar from './componentes/auth/Mostrar';
+import Editar from './componentes/auth/Editar';
+import { HomePage, MoviePage, SearchPage } from "./pages";
+
+/*import Login from './componentes/auth/Login';*/
+
 
 
 const auth = getAuth(firebaseApp);
@@ -17,7 +27,7 @@ const firestore = getFirestore(firebaseApp);
 
 function App() {
   const [user, setUser] = useState(null);
-  
+
 
   async function getRol(uid) {
     const docuRef = doc(firestore, `Usuarios/${uid}`);
@@ -31,23 +41,21 @@ function App() {
       const userData = {
         uid: usuarioFirebase.uid,
         email: usuarioFirebase.email,
-        userfire,
         rol: userfire.rol,
         nombre: userfire.Nombre,
         apellido: userfire.Apellido,
         pais: userfire.Pais,
         ciudad: userfire.Ciudad,
-        provincia: userfire.Provincia,
         domicilio: userfire.Domicilio,
-        barrio: userfire.Barrio,
+        postal: userfire.Postal,
         telefono: userfire.Telefono,
-        postal:userfire.Postal,
-
+        barrio: userfire.Barrio,
+        provincia: userfire.Provincia
       };
-      
-    
+
+
       setUser(userData);
-      
+
       console.log("userData final", userData);
     });
   }
@@ -63,13 +71,34 @@ function App() {
 
   });
 
-
   return (
     <div className='app'>
       <MovieProvider>
-      
-        <AppRouter/>
+        
+
+        <Routes>
+            <Route path ='/' element={<Navigation user={user}  />}>
+                <Route index element={<HomePage/>}/>
+                <Route path='movie/:id' element={<MoviePage/>}/>
+                <Route path="search" element={<SearchPage/>} />
+                <Route path='/Login' element={<Login/>}/>
+                <Route path='/Admin' element={<Admin/>}/>
+                <Route path='/Mostrar' element={<Mostrar/>}/>
+                <Route path='/editarusuario/:id' element={<Editar/>}/>
+                <Route path='/perfil/:id' element={<Perfil/>}/>
+                <Route path='/Registrarse' element={<Registrarse/>}/>
+
+
+            </Route>
+            
+
+            <Route path='*' element={<Navigate to='/'/>}/>
+
+        </Routes>
         <Footer/>
+
+        
+      
         
       </MovieProvider>
 
