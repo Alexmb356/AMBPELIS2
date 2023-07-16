@@ -151,7 +151,7 @@ const Perfil = () =>{
                         <legend className="formulario-contacto__contenido__titulo text-3xl text-center mb-2 text-white" style={{fontWeight: 'bold'}}>Bienvenido {form.Nombre}</legend>
                             <h1 className="text-right px-3 mb-3 h5">
                                     {form.rol=== "admin" ?(
-									<a href="/Admin" className=' text-white' style={{fontWeight: 'bold'}}>Administrar</a>
+									<Link to="/Admin" className=' text-white' style={{fontWeight: 'bold'}}>Administrar</Link>
 								) : null}
                                 </h1>
                                    
