@@ -90,7 +90,8 @@ function Navigation ({user}) {
 									<a href="/Login">Iniciar Sesion</a>
 								) : (
 									<>
-									<a href={`/perfil/${user.uid}`}  className='m-5'>{user.nombre}</a>
+									<Link to={`/perfil/${user.uid}`}  className='m-5'>{user.nombre}</Link>
+									{/*<a href={`/perfil/${user.uid}`}  className='m-5'>{user.nombre}</a>*/}
 									<button className="logout-button text-white" onClick={cerrarSesion}>Cerrar sesión</button>
 									</>
 								)}
