@@ -1,5 +1,5 @@
 export * from './Admin'
-export * from './Login'
+export * from './LogIns'
 export * from './Mostrar'
 export * from './Registrarse'
 export * from './Alert'
