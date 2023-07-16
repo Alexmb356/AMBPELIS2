@@ -4,6 +4,9 @@ import {Link, useNavigate} from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../../firebaseConfig/firebase";
 import { Alert } from "./Alert";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 const auth = getAuth(firebaseApp);
 
 
@@ -30,7 +33,10 @@ function LogIns() {
 
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            loginperfect();
             navigate("/");
+
+
         } catch (error) {
 
             //Switch para personalizar el mensaje de error
@@ -57,6 +63,20 @@ function LogIns() {
 
         
     }
+
+    
+    const loginperfect = () => {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Iniciaste Sesión',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+    }
+
+  
     
     return (
         <div>

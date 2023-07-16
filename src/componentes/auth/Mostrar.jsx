@@ -81,7 +81,7 @@ const Mostrar = () => {
                 <div className='col h-full  relative z-2 m-2 px-10 fluid-sm'>
                     <legend className="formulario-contacto__contenido__titulo text-2xl mb-2 self-center text-center m-2 fluid-sm  text-white" style={{fontWeight: 'bold'}}>USUARIOS</legend>
                     <div className='d-grid gap-2'>
-                        <Link to="/Registrarse" className='btn btn-outline-light btn-lg mt-3 mb-4 w-25  m-2 fluid-sm  text-white' style={{fontWeight: 'bold'}} >Registrar Usuario <i className="fa-solid fa-plus"></i></Link>
+                        <Link to="/Registrarse" className='btn btn-outline-success btn-lg mt-3 mb-4 w-25  m-2 fluid-sm  text-white' style={{fontWeight: 'bold'}} >Registrar Usuario <i className="fa-solid fa-plus"></i></Link>
                     </div>
                     <div className='container-table'>
 
