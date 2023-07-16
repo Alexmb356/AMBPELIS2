@@ -3,6 +3,13 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { MovieContext } from '../context/MovieContext';
 import firebaseApp from "../firebaseConfig/firebase";
 import { getAuth, signOut } from "firebase/auth";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 const auth = getAuth(firebaseApp);
 
 
@@ -31,77 +38,101 @@ function Navigation ({user}) {
 	
 	  } 
 
+	// Función para cerrar el menú hamburguesa al scrollear
+    const handleTogglerNav = e =>{
+        
+        const basicNavBar = document.getElementById("basic-navbar-nav");
+        
+        window.addEventListener("scroll", ()=>{
+          if(basicNavBar.classList.contains("show")){
+            e.target.click();
+          }
+        });
+
+    }
+
 
 	  
 
   return (
     <>
 			<header className='header col'>
-			<div className="row">
-				<Link to='/' className='logo col-md-4'>
-					<img
-						src="../ambpelislogo-192x192.png"
-                        width="30"
-                        height="90"
-                        className="d-inline-block align-top"
-                        alt="AMBPelis Logo"
-					/>
-				</Link>
-               
-
-				<form onSubmit={onSearchSubmit} className='col-md-4'>
-					<div className='row'>
-						
-						<div className='form-group col-md-7'>
-							
-							<svg
-								xmlns='http://www.w3.org/2000/svg'
-								fill='none'
-								viewBox='0 0 24 24'
-								strokeWidth='1.5'
-								stroke='currentColor'
-								className='icon-search'
-							>
-								<path
-									strokeLinecap='round'
-									strokeLinejoin='round'
-									d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
-								/>
-							</svg>
-							<input
-								type='search'
-								name='valueSearch'
-								id=''
-								value={valueSearch}
-								onChange={onInputChange}
-								placeholder='Buscar Pelicula'
-							/>
-							<button className='btn-search'>Buscar</button>
-						</div>
-						
-
-						
-						
-					</div>
-				</form>
-				<div className='container-sesion col-md-4'>
-							<h1 className="text-right px-3 mb-3 h5">
-								{user === null ? (<>
-								
-									<Link to="/Login" >Iniciar sesion</Link>
-									{/*<a href="/Login">Iniciar Sesion</a>*/}
-								</>
-								) : (
-									<>
-									<Link to={`/perfil/${user.uid}`}  className='m-5'>{user.nombre}</Link>
-									{/*<a href={`/perfil/${user.uid}`}  className='m-5'>{user.nombre}</a>*/}
-									<button className="logout-button text-white" onClick={cerrarSesion}>Cerrar sesión</button>
-									</>
-								)}
-							</h1>
-						</div>
 				
-			</div>
+			<Navbar expand="md"  data-bs-theme="dark">
+				<Container fluid>
+					<Navbar.Brand href="/" className='logo'>
+
+						<img
+							src="../ambpelislogo-192x192.png"
+							width="30"
+							height="200"
+							className="d-inline-block align-top"
+							alt="AMBPelis Logo"
+						/>
+
+
+					</Navbar.Brand>
+					<Navbar.Toggle onClick={e => handleTogglerNav(e)} aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse className="ml-auto" id="basic-navbar-nav">
+						<Navbar.Offcanvas
+						id="basic-navbar-nav"
+						aria-labelledby="basic-navbar-nav"
+						placement="end"
+						className='justify-content-end'
+						
+						>
+							<Offcanvas.Header closeButton>
+								<Offcanvas.Title id="basic-navbar-nav">
+								AMBPELIS
+								</Offcanvas.Title>
+							</Offcanvas.Header>
+							<Offcanvas.Body>
+								<Form className="d-flex" onSubmit={onSearchSubmit}>
+									<Form.Control
+									type="search"
+									placeholder="Search"
+									className="me-2"
+									aria-label="Search"
+									value={valueSearch}
+									onChange={onInputChange}
+									name='valueSearch'
+									/>
+									<Button variant="outline-success" type="submit">Search</Button>
+								</Form>
+								<Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase" style={{ maxHeight: '200px' }} navbarScroll>
+									{user === null ? (<>
+										<Nav.Link href="/Login" >Iniciar sesion</Nav.Link>
+									</>) : (
+										<>
+											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
+												<NavDropdown.Item href={`/perfil/${user.uid}`}>Perfil</NavDropdown.Item>
+												<NavDropdown.Item href="/" onClick={cerrarSesion}>
+													Cerrar sesión
+													
+												</NavDropdown.Item>
+												{user.rol ===  "admin" ? (<>
+												<NavDropdown.Item  href="/Admin">Administrar</NavDropdown.Item>
+												</>) : null}
+													
+
+												
+											</NavDropdown>
+										</>
+									)}
+								</Nav>	
+								
+
+							</Offcanvas.Body>
+						</Navbar.Offcanvas>
+					</Navbar.Collapse>
+      			</Container>
+
+
+			</Navbar>
+			
+			
+          
+  
 			</header>
 
 			<Outlet />
