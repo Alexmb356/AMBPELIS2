@@ -11,7 +11,7 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import Perfil from './componentes/auth/Perfil';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Navigation from "./componentes/Navigation";
-import LogIn from './componentes/auth/LogIn';
+import LogIns from './componentes/auth/LogIns';
 import Admin from './componentes/auth/Admin';
 import Registrarse from './componentes/auth/Registrarse';
 import Mostrar from './componentes/auth/Mostrar';
@@ -81,7 +81,7 @@ function App() {
                 <Route index element={<HomePage/>}/>
                 <Route path='movie/:id' element={<MoviePage/>}/>
                 <Route path="search" element={<SearchPage/>} />
-                <Route path='/Login' element={<LogIn/>}/>
+                <Route path='/Login' element={<LogIns/>}/>
                 <Route path='/Admin' element={<Admin/>}/>
                 <Route path='/Mostrar' element={<Mostrar/>}/>
                 <Route path='/editarusuario/:id' element={<Editar/>}/>
