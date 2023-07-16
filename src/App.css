@@ -189,7 +189,7 @@ header {
 	color: #faf9f9;
 }
 
-@media (max-width: 412px) {
+@media (max-width: 768px) {
 	.card-list-Movie {
 		
 		grid-template-columns: repeat(1, 1fr);
@@ -197,10 +197,18 @@ header {
 	}
 }
 
-@media (min-width: 413px) and (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
 	.card-list-Movie {
 		
 		grid-template-columns: repeat(2, 1fr);
+		
+	}
+  }
+
+  @media (min-width: 1025px) {
+	.card-list-Movie {
+		
+		grid-template-columns: repeat(4, 1fr);
 		
 	}
   }
