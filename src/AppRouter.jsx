@@ -1,7 +1,7 @@
 import React from "react";
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Navigation from "./componentes/Navigation";
-import Login from './componentes/auth/Login';
+import Login from './componentes/auth/LogIn';
 import Admin from './componentes/auth/Admin';
 import Registrarse from './componentes/auth/Registrarse';
 import Mostrar from './componentes/auth/Mostrar';

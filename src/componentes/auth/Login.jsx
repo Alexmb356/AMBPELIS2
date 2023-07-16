@@ -12,7 +12,7 @@ const toggleLogin = ()=> {
     containerLogin.classList.toggle("d-none");
 }
 
-function Login() {
+function LogIn() {
     const [isRegistrando, setIsRegistrando] = useState(false);
     const [user, setUser]= useState ({
         email:"",
@@ -96,4 +96,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default LogIn;
