@@ -1,9 +1,7 @@
 
 import './App.css';
 import React, {useState} from 'react';
-import { AppRouter } from './AppRouter';
 import { MovieProvider } from './context/MovieProvider';
-
 import Footer from './componentes/Footer';
 import firebaseApp from "./firebaseConfig/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
