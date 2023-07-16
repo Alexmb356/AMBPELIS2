@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Navigation from "./componentes/Navigation";
 import Login from './componentes/auth/LogIn';
@@ -34,4 +34,4 @@ export const AppRouter = () => {
 
     )
     
-};
+};*/
