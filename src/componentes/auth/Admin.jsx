@@ -4,7 +4,7 @@ import React from 'react'
 
 function Admin() {
     return (
-        <div className='Container-Admin'style={{ height: '43vh', width: '100vw' }}>
+        <div className='Container-Admin'>
             <div className='Container'>
                 <form action="#" className=" h-full  relative z-2 m-2 px-10">
                     <fieldset className="formulario-contacto__contenido">

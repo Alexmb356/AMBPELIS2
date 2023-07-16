@@ -20,7 +20,7 @@ export const SearchPage = () => {
 
 
   return (
-    <div className='container'>
+    <div className='container-search'>
 			
 			<div className='card-list-Movie container'>
 				{globalMovies.map(movie => (

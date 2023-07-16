@@ -189,6 +189,20 @@ header {
 	color: #faf9f9;
 }
 
+.container-login{
+	min-height: 43vh;
+	width: 100%;
+  }
+.container-search{
+	min-height: 43vh;
+	width: 100%;
+}
+
+.Container-Admin{
+	min-height: 42vh;
+	width: 100%;
+}
+
 @media (max-width: 768px) {
 	.card-list-Movie {
 		

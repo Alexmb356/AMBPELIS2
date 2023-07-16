@@ -38,6 +38,17 @@ function Navigation ({user}) {
 	
 	  } 
 
+	function iniciarSesion () {
+		navigate("/Login");
+		
+		
+	
+	  }
+	
+	  const linkStyles = {
+		textDecoration: 'none'
+	  };
+
 	// Función para cerrar el menú hamburguesa al scrollear
     const handleTogglerNav = e =>{
         
@@ -99,19 +110,19 @@ function Navigation ({user}) {
 									/>
 									<Button variant="outline-success" type="submit">Search</Button>
 								</Form>
-								<Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase" style={{ maxHeight: '200px' }} navbarScroll>
+								<Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4" style={{ maxHeight: '200px' }} navbarScroll>
 									{user === null ? (<>
-										<Link to="/Login" >Iniciar sesion</Link>
+										<Button variant="link-success" onClick={iniciarSesion} >Iniciar sesion</Button>
 									</>) : (
 										<>
 											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
-												<NavDropdown.Item href={`/perfil/${user.uid}`}>Perfil</NavDropdown.Item>
-												<NavDropdown.Item href="/" onClick={cerrarSesion}>
+												<NavDropdown.Item ><Link to= {`/perfil/${user.uid}`} style={linkStyles} >Perfil</Link></NavDropdown.Item>
+												<NavDropdown.Item ><Link to= "/" onClick={cerrarSesion} style={linkStyles}>
 													Cerrar sesión
-													
+													</Link>
 												</NavDropdown.Item>
 												{user.rol ===  "admin" ? (<>
-												<NavDropdown.Item  href="/Admin">Administrar</NavDropdown.Item>
+												<NavDropdown.Item> <Link to= "/Admin" style={linkStyles}>Administrar</Link></NavDropdown.Item>
 												</>) : null}
 													
 
