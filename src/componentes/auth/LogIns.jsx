@@ -7,10 +7,7 @@ import { Alert } from "./Alert";
 const auth = getAuth(firebaseApp);
 
 
-const toggleLogin = ()=> {
-    const containerLogin = document.getElementById("containerLogin");
-    containerLogin.classList.toggle("d-none");
-}
+
 
 function LogIns() {
     const [isRegistrando, setIsRegistrando] = useState(false);
@@ -84,7 +81,7 @@ function LogIns() {
                             onChange={handleChange}
                             className='formulario-contacto__contenido__nombre rounded-md p-1 text-white bg-gray-300 mb-2' placeholder='Escriba su contraseña' data='password' />
                             <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 p-1" type="submit" formaction="./menu-administrador.html" onClick={() => setIsRegistrando(!isRegistrando)}>INGRESAR</button>
-                            <Link to="/Registrarse" onClick={toggleLogin} className="flex self-center m-2 hover:text-gray-500  text-white"><strong>REGISTRARSE</strong></Link>
+                            <Link to="/Registrarse" className="flex self-center m-2 hover:text-gray-500  text-white"><strong>REGISTRARSE</strong></Link>
                             
                             
                         </div>
