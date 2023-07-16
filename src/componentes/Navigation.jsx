@@ -86,8 +86,11 @@ function Navigation ({user}) {
 				</form>
 				<div className='container-sesion col-md-4'>
 							<h1 className="text-right px-3 mb-3 h5">
-								{user === null ? (
-									<a href="/Login">Iniciar Sesion</a>
+								{user === null ? (<>
+								
+									<Link to="/Login" >Iniciar sesion</Link>
+									{/*<a href="/Login">Iniciar Sesion</a>*/}
+								</>
 								) : (
 									<>
 									<Link to={`/perfil/${user.uid}`}  className='m-5'>{user.nombre}</Link>
