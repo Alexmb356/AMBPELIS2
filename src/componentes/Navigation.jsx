@@ -101,7 +101,7 @@ function Navigation ({user}) {
 								</Form>
 								<Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase" style={{ maxHeight: '200px' }} navbarScroll>
 									{user === null ? (<>
-										<Nav.Link href="/Login" >Iniciar sesion</Nav.Link>
+										<Link href="/Login" >Iniciar sesion</Link>
 									</>) : (
 										<>
 											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
