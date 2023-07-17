@@ -4,8 +4,16 @@ import { Link } from 'react-router-dom';
 
 
 export const CardMovie = ({movie}) => {
+	const handleLinkClick = () => {
+		window.scrollTo({
+		  top: 0,
+		  behavior: 'smooth'
+		});
+	  };
+
+
   return (
-    <Link to={`/movie/${movie.id}`} className='card-movie text-decoration-none' >
+    <Link to={`/movie/${movie.id}`} className='card-movie text-decoration-none' onClick={handleLinkClick} >
 			  <div className='card-img'>
 				<img
 					src={`${URL_IMAGE + movie.poster_path}`}

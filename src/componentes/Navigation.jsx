@@ -9,7 +9,10 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
 const auth = getAuth(firebaseApp);
 
 
@@ -31,19 +34,38 @@ function Navigation ({user}) {
 		onResetForm();
 	};
 
-	function cerrarSesion () {
+	/*function cerrarSesion () {
 		navigate("/");
 		signOut(auth);
 		closeMenu();
+		logincerrar ()
 	
-	  } 
+	  } */
 
-	function iniciarSesion () {
-		navigate("/Login");
-		
-		
-	
-	  }
+	const cerrarSesion = () => {
+		Swal.fire({
+			title: 'Cerrar Sesión?',
+			text: "Estas seguro de cerrar sesión ",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si, Cerrar sesión!'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+			  Swal.fire(
+				'Sesión Cerradad!',
+				'Tu sesión a finalizado.',
+				'success',
+				
+				signOut(auth),
+				navigate("/"),
+				closeMenu()
+			  )
+			}
+		  })
+
+    }
 	
 	  const linkStyles = {
 		textDecoration: 'none'
@@ -51,21 +73,7 @@ function Navigation ({user}) {
 
 	// Función para cerrar el menú hamburguesa al scrollear
 	const [menuOpen, setMenuOpen] = useState(false);
-   /* const handleMenuOptionClick = () => {
-        
-        /*const basicNavBar = document.getElementById("basic-navbar-nav");
-        
-        window.addEventListener("scroll", ()=>{
-          if(basicNavBar.classList.contains("show")){
-            e.target.click();
-          }
-        });*/
-
-		/*setMenuOpen(false);
-
-		
-
-    }*/
+  
 	const closeMenu = () => {
 		setMenuOpen(false);
 	  };
@@ -125,7 +133,7 @@ function Navigation ({user}) {
 										<>
 											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
 												<NavDropdown.Item ><Link to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} >Perfil</Link></NavDropdown.Item>
-												<NavDropdown.Item ><Link to= "/" onClick={cerrarSesion} style={linkStyles}>
+												<NavDropdown.Item ><Link to= "#" onClick={cerrarSesion} style={linkStyles}>
 													Cerrar sesión
 													</Link>
 												</NavDropdown.Item>

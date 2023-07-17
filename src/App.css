@@ -190,7 +190,7 @@ header {
 }
 
 .container-login{
-	min-height: 43vh;
+	min-height: 39.5vh;
 	width: 100%;
   }
 .container-search{
@@ -209,6 +209,14 @@ header {
 		grid-template-columns: repeat(1, 1fr);
 		
 	}
+
+	.viewtrailer{
+		min-height: 50vh;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		align-items: flex-end;
+	}
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -225,4 +233,5 @@ header {
 		grid-template-columns: repeat(4, 1fr);
 		
 	}
+	
   }
