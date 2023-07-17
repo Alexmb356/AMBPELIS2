@@ -1,4 +1,4 @@
-import React, {useContext } from 'react';
+import React, {useContext, useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { MovieContext } from '../context/MovieContext';
 import firebaseApp from "../firebaseConfig/firebase";
@@ -34,7 +34,7 @@ function Navigation ({user}) {
 	function cerrarSesion () {
 		navigate("/");
 		signOut(auth);
-		
+		closeMenu();
 	
 	  } 
 
@@ -50,17 +50,35 @@ function Navigation ({user}) {
 	  };
 
 	// Función para cerrar el menú hamburguesa al scrollear
-    const handleTogglerNav = e =>{
+	const [menuOpen, setMenuOpen] = useState(false);
+   /* const handleMenuOptionClick = () => {
         
-        const basicNavBar = document.getElementById("basic-navbar-nav");
+        /*const basicNavBar = document.getElementById("basic-navbar-nav");
         
         window.addEventListener("scroll", ()=>{
           if(basicNavBar.classList.contains("show")){
             e.target.click();
           }
-        });
+        });*/
 
-    }
+		/*setMenuOpen(false);
+
+		
+
+    }*/
+	const closeMenu = () => {
+		setMenuOpen(false);
+	  };
+
+	console.log("estado",menuOpen)
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+		  setMenuOpen(false);
+		}, 2000);
+	  
+		return () => clearTimeout(timer);
+	  }, []);
 
 
 	  
@@ -69,7 +87,7 @@ function Navigation ({user}) {
     <>
 			<header className='header col'>
 				
-			<Navbar expand="md"  data-bs-theme="dark">
+			<Navbar collapseOnSelect expand="md"  data-bs-theme="dark">
 				<Container fluid>
 					<Navbar.Brand href="/" className='logo'>
 
@@ -83,21 +101,10 @@ function Navigation ({user}) {
 
 
 					</Navbar.Brand>
-					<Navbar.Toggle onClick={e => handleTogglerNav(e)} aria-controls="basic-navbar-nav" />
-					<Navbar.Collapse className="ml-auto" id="basic-navbar-nav">
-						<Navbar.Offcanvas
-						id="basic-navbar-nav"
-						aria-labelledby="basic-navbar-nav"
-						placement="end"
-						className='justify-content-end'
-						
-						>
-							<Offcanvas.Header closeButton>
-								<Offcanvas.Title id="basic-navbar-nav">
-								AMBPELIS
-								</Offcanvas.Title>
-							</Offcanvas.Header>
-							<Offcanvas.Body>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav"   onClick={() => setMenuOpen(!menuOpen)} />
+					<Navbar.Collapse className="ml-auto justify-content-end" id="responsive-navbar-nav">
+					<Nav className="me-auto">
+							
 								<Form className="d-flex" onSubmit={onSearchSubmit}>
 									<Form.Control
 									type="search"
@@ -112,17 +119,18 @@ function Navigation ({user}) {
 								</Form>
 								<Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4" style={{ maxHeight: '200px' }} navbarScroll>
 									{user === null ? (<>
-										<Button variant="link-success" onClick={iniciarSesion} >Iniciar sesion</Button>
+										<Nav.Link ><Link to= "/Login" style={linkStyles} onClick={closeMenu} >Iniciar sesion</Link></Nav.Link>
+										
 									</>) : (
 										<>
 											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
-												<NavDropdown.Item ><Link to= {`/perfil/${user.uid}`} style={linkStyles} >Perfil</Link></NavDropdown.Item>
+												<NavDropdown.Item ><Link to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} >Perfil</Link></NavDropdown.Item>
 												<NavDropdown.Item ><Link to= "/" onClick={cerrarSesion} style={linkStyles}>
 													Cerrar sesión
 													</Link>
 												</NavDropdown.Item>
 												{user.rol ===  "admin" ? (<>
-												<NavDropdown.Item> <Link to= "/Admin" style={linkStyles}>Administrar</Link></NavDropdown.Item>
+												<NavDropdown.Item> <Link to= "/Admin" style={linkStyles} onClick={closeMenu}>Administrar</Link></NavDropdown.Item>
 												</>) : null}
 													
 
@@ -133,8 +141,7 @@ function Navigation ({user}) {
 								</Nav>	
 								
 
-							</Offcanvas.Body>
-						</Navbar.Offcanvas>
+							</Nav>
 					</Navbar.Collapse>
       			</Container>
 

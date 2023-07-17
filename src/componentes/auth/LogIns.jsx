@@ -99,7 +99,7 @@ function LogIns() {
                             name="password"
                             id="password"
                             onChange={handleChange}
-                            className='formulario-contacto__contenido__nombre rounded-md p-1 text-white bg-gray-300 mb-2' placeholder='Escriba su contraseña' data='password' />
+                            className='formulario-contacto__contenido__nombre rounded-md p-1 text-black bg-gray-300 mb-2' placeholder='Escriba su contraseña' data='password' />
                             <button className="bg-black text-white rounded-md formulario-contacto__contenido__boton text-2 m-2 p-1" type="submit" formaction="./menu-administrador.html" onClick={() => setIsRegistrando(!isRegistrando)}>INGRESAR</button>
                             <Link to="/Registrarse" className="flex self-center m-2 hover:text-gray-500  text-white"><strong>REGISTRARSE</strong></Link>
                             

@@ -1,4 +1,7 @@
-
+import React from 'react'
+import { Link } from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faLinkedinIn} from '@fortawesome/free-brands-svg-icons'
 
 
 export default function Footer() {
@@ -20,11 +23,15 @@ export default function Footer() {
           <br/>
           <div className='grid-flow-col gap-4 md:place-self-center md:justify-self-end'>
             <p className="mt-4 text-white">Copyright © 2023 - All right reserved- Alexander Mora &copy; {fechaActual.getFullYear()}</p>
+            
           </div>
 
           <div className='grid-flow-col gap-4 md:place-self-center md:justify-self-end'>
                                              
                   <h3 className='h4 text-white'>Nuestras redes</h3>
+                  <Link to="https://www.linkedin.com/in/alexmb356/">
+                      <FontAwesomeIcon icon={faLinkedinIn} style={{color: "#f7f7f7",}} size='lg'/>
+                  </Link>
                   <div className='d-flex justify-content-center border-dark p-2'>
                       
                       <svg xmlns="http://www.w3.org/2000/svg" aria-label="Facebook" height="2.25em" viewBox="0 0 448 512">
