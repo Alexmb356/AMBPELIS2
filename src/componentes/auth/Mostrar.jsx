@@ -85,7 +85,7 @@ const Mostrar = () => {
                     </div>
                     <div className='container-table'>
 
-                        <Table striped bordered hover responsive="xl" variant="dark">
+                        <Table striped bordered hover responsive variant="dark" className='table'>
                             <thead>
                                 <tr>
                                     <th>Nombre</th>

@@ -9,9 +9,11 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { text } from '@fortawesome/fontawesome-svg-core';
 const MySwal = withReactContent(Swal);
 const auth = getAuth(firebaseApp);
 
@@ -68,7 +70,8 @@ function Navigation ({user}) {
     }
 	
 	  const linkStyles = {
-		textDecoration: 'none'
+		textDecoration: 'none',
+		color: 'white'
 	  };
 
 	// Función para cerrar el menú hamburguesa al scrollear
@@ -109,11 +112,14 @@ function Navigation ({user}) {
 
 
 					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav"   onClick={() => setMenuOpen(!menuOpen)} />
-					<Navbar.Collapse className="ml-auto justify-content-end" id="responsive-navbar-nav">
-					<Nav className="me-auto">
-							
-								<Form className="d-flex" onSubmit={onSearchSubmit}>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" style={linkStyles }  onClick={() => setMenuOpen(!menuOpen)} />
+					<Navbar.Collapse className="ml-auto " id="responsive-navbar-nav" >
+					<Nav className="mr-auto justify-end">
+						<Nav.Link as={Link} to="/" className='me-auto' style={linkStyles }><FontAwesomeIcon icon={faHouse} style={{color: "#fafafa",}} /> Inicio</Nav.Link>
+					</Nav>
+					<Nav className="mr-auto justify-end">
+						<Nav className="mr-auto justify-content-center" style={{ maxHeight: '200px' }} navbarScroll>
+							<Form className="d-flex" onSubmit={onSearchSubmit}>
 									<Form.Control
 									type="search"
 									placeholder="Search"
@@ -124,21 +130,22 @@ function Navigation ({user}) {
 									name='valueSearch'
 									/>
 									<Button variant="outline-success" type="submit">Search</Button>
-								</Form>
-								<Nav className="me-auto my-2 my-lg-0 justify-content-end text-uppercase ml-4" style={{ maxHeight: '200px' }} navbarScroll>
+							</Form>
+						</Nav>
+								<Nav className="mr-auto justify-content-center" style={{ maxHeight: '200px' }} navbarScroll>
 									{user === null ? (<>
-										<Nav.Link ><Link to= "/Login" style={linkStyles} onClick={closeMenu} >Iniciar sesion</Link></Nav.Link>
+										<Nav.Link as={Link} to="/Login" style={linkStyles } onClick={closeMenu}  ><FontAwesomeIcon icon={faCircleUser} style={{color: "#fafafa",}} /> Iniciar sesion</Nav.Link>
 										
 									</>) : (
 										<>
 											<NavDropdown title={user.nombre} id="basic-navbar-nav" className='text-success'>
-												<NavDropdown.Item ><Link to= {`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} >Perfil</Link></NavDropdown.Item>
-												<NavDropdown.Item ><Link to= "#" onClick={cerrarSesion} style={linkStyles}>
+												<NavDropdown.Item as={Link} to={`/perfil/${user.uid}`} style={linkStyles} onClick={closeMenu} >Perfil</NavDropdown.Item>
+												<NavDropdown.Item as={Link} to= "#" onClick={cerrarSesion} style={linkStyles}>
 													Cerrar sesión
-													</Link>
+													
 												</NavDropdown.Item>
 												{user.rol ===  "admin" ? (<>
-												<NavDropdown.Item> <Link to= "/Admin" style={linkStyles} onClick={closeMenu}>Administrar</Link></NavDropdown.Item>
+												<NavDropdown.Item as={Link} to= "/Admin" style={linkStyles} onClick={closeMenu}>Administrar</NavDropdown.Item>
 												</>) : null}
 													
 

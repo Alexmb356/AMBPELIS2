@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;800&family=Roboto:ital,wght@1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,15 +14,28 @@
 
 .app {
 	background-color: rgb(54, 54, 143);
+	
+	/*font-family: 'Roboto', sans-serif;*/
 }
 
 
 /* Header */
 header {
 	
-	align-items: center;
-	justify-content: space-between;
+	
+	
+	
+	flex-direction: column;
+	
+	
+	font-size: calc(10px + 2vmin);
 	background-color: #21226a;
+	
+}
+
+.navcollapse {
+	display: flex;
+	align-items: end;
 	
 }
 
@@ -235,3 +250,5 @@ header {
 	}
 	
   }
+
+  

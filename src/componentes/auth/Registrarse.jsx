@@ -101,6 +101,10 @@ function Registrarse(){
             setDoc(docuRef, { Nombre: Nombre, Apellido: Apellido,  Email: email, Password: password, Edad: Edad, Pais: Pais, Ciudad: Ciudad,Barrio:Barrio, Provincia:Provincia, Domicilio: Domicilio, Postal: Postal, Telefono:Telefono, Reppassword: Reppassword, rol: 'user' });
             alertCreacion();
             navigate("/");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
     
 
         }
