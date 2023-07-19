@@ -240,15 +240,38 @@ header {
 		grid-template-columns: repeat(2, 1fr);
 		
 	}
+	.viewtrailer{
+		min-height: 80vh;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		align-items: flex-end;
+	}
   }
 
-  @media (min-width: 1025px) {
+  @media (min-width: 1025px) and (max-width: 1348px){
+	.card-list-Movie {
+		
+		grid-template-columns: repeat(4, 1fr);
+		
+	}
+	.viewtrailer{
+		min-height: 80vh;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		align-items: flex-end;
+	}
+	
+  }
+
+  @media (min-width: 1349px) {
 	.card-list-Movie {
 		
 		grid-template-columns: repeat(4, 1fr);
 		
 	}
 	
+	
   }
-
   
