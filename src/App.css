@@ -271,7 +271,19 @@ header {
 		grid-template-columns: repeat(4, 1fr);
 		
 	}
+	.viewtrailer{
+		min-height: 85vh;
+		margin-left: 8%;
+		margin-right: 8%;
+		background-size:cover;
+		background-position: center;
+		display: flex;
+		align-items: flex-end;
+	}
 	
-	
+	.container-movieoverview{
+		margin-left: 7%;
+		margin-right: 7%;
+	}
   }
   
