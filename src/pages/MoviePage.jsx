@@ -25,7 +25,7 @@ export const MoviePage = () => {
       params: {
         api_key: API_KEY,
         append_to_response: "videos",
-        language: "es-MX"
+        //language: "es-MX"
       },
       
     });

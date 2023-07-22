@@ -17,7 +17,7 @@ export const MovieProvider = ({children}) => {
 
 	// Estados para la aplicación simples
 	const [loading, setLoading] = useState(true);
-	const [active, setActive] = useState(false);
+	
 	
 
 	// Utilizar CustomHook - useForm
@@ -92,16 +92,7 @@ export const MovieProvider = ({children}) => {
 
 	
 
-	//Llamar a una pelicula por ID
-	const getMovieByID = async (id) => {
-		const baseURL = API_URL
-		const keyURL = API_KEY
-		const res = await fetch (`${baseURL}/movie/${id}?api_key=${keyURL}&language=es-MX`)
-		const data = await res.json();
-		
-		return data;
-		
-	}
+	
 
 	
 	
@@ -114,13 +105,13 @@ export const MovieProvider = ({children}) => {
 				onInputChange,
 				onResetForm,
 				allMovies,
-				getMovieByID,
 				globalMovies,
 				loading,
 				setLoading,
 				onClickLoadMore,
 				onClickLess,
 				getGlobalMovies,
+				
 				
 	}}>
 		{children}
